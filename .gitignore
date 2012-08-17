@@ -46,3 +46,9 @@ Thumbs.db
 #################
 Polaroid-Photo-Stack.sublime-workspace
 Polaroid-Photo-Stack.sublime-project
+
+#################
+# Compass Files #
+#################
+compass_app_log.txt
+.sass-cache

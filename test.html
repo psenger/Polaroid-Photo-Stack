@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+        <meta name="description" content="Create Cool Polaroid Photo Stacks with jQuery and CSS3" />
+
+		<link href="/css/Polaroid-Photo-Stack.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<!--[if IE]>
+		<link href='/css/Polaroid-Photo-Stack-Ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+		<![endif]-->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+		<script src="Polaroid-Photo-Stack.js"></script>
+		<script type="text/javascript">
+
+		$(function() {
+
+			$('#albums').children('div.album').PolaroidPhotoStack( );
+
+			$('#HardLoad').PolaroidPhotoStack( { 
+				data : ["images\/photos\/album-one\/ID-10019581.jpg","images\/photos\/album-one\/ID-100421.jpg","images\/photos\/album-one\/ID-1004552.jpg","images\/photos\/album-one\/ID-1005942.jpg","images\/photos\/album-one\/ID-1006595.jpg"]
+			});
+
+		});
+
+		</script>
+    </head>
+    <body>
+
+		<div id="albums">
+
+			<div class="album" id='one' album="album-one" ><!-- album="images/photos/album-one" -->
+
+				<img src="images/photos/album-one/ID-1005942.jpg" height="132px" width="200px" alt="Image courtesy of FreeDigitalPhotos.net"/>
+				<div class="ps_desc">
+					<h2>Spring</h2>
+					<span><p>Image courtesy of <a href="http://www.freedigitalphotos.net" target="_blank">FreeDigitalPhotos.net</a></p></span>
+				</div>
+
+			</div>
+		 
+			<div class="album" id='two' album="album-two" ><!-- album="images/photos/album-two" -->
+
+				<img src="images/photos/album-two/ID-10012882.jpg" height="132px" width="200px" alt="Image courtesy of FreeDigitalPhotos.net"/>
+				<div class="ps_desc">
+					<h2>Australia</h2>
+					<span><p>Image courtesy of <a href="http://www.freedigitalphotos.net" target="_blank">FreeDigitalPhotos.net</a></p></span>
+				</div>
+
+			</div>
+			 			
+		</div>
+ 
+		<div class="album" id='HardLoad' >
+
+			<img src="images/photos/album-one/ID-1005942.jpg" height="132px" width="200px" alt="Image courtesy of FreeDigitalPhotos.net"/>
+			<div class="ps_desc">
+				<h2>Spring</h2>
+				<span><p>Image courtesy of <a href="http://www.freedigitalphotos.net" target="_blank">FreeDigitalPhotos.net</a></p></span>
+			</div>
+
+		</div>
+
+ 
+    </body>
+</html>

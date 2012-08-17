@@ -1,0 +1,16 @@
+/* 
+ * IE specific Css override styles.
+ */
+.PPS-Loading-Mask {
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+
+#PPS-Container #PPS-Next {
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+#PPS-Container #PPPS-Prev {
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+#PPS-Container #PPS-Close {
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
