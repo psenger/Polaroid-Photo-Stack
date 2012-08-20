@@ -11,6 +11,16 @@
 (function( $ ) {
 
 	$.PolaroidPhotoStack = {
+		isUnLocked : function () {
+			var lock = $.data( document.body, 'PPS-lock' );
+			return ( lock === false || lock === undefined || lock === null );
+		},
+		lock : function( ) {
+			$.data( document.body, 'PPS-lock', true );
+		},
+		unLock : function( ) {
+			$.data( document.body, 'PPS-lock', false );
+		},
 		showLoadingMask : function( cssPrefix ) {
 			$('<div id="' + cssPrefix + '-Loading-Mask" class="loading" />').appendTo(document.body);
 		},
@@ -81,7 +91,7 @@
 													$('#' + cssPrefix + '-Container').remove();
 												}
 											);
-				$.data( document.body, 'PPS-lock', false );
+				$.PolaroidPhotoStack.unLock();
 			});
 			$photoStackContainer.append( $buttonNext );
 			$photoStackContainer.append( $buttonPrev );
@@ -146,10 +156,8 @@
 			'cssPrefix' : 'PPS'
 		}, options );
 		this.bind('click', function( eventObj ) {
-					var lock = $.data( document.body, 'PPS-lock' );
-					if ( lock === false || lock === undefined || lock === null )
-					{
-						$.data( document.body, 'PPS-lock', true );
+					if ( $.PolaroidPhotoStack.isUnLocked() ) {
+						$.PolaroidPhotoStack.lock();
 						$.PolaroidPhotoStack.showLoadingMask( params.cssPrefix );
 						$.PolaroidPhotoStack.addControls( params.cssPrefix );
 						if ( params.data === null ) {
