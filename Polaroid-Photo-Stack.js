@@ -81,6 +81,7 @@
 													$('#' + cssPrefix + '-Container').remove();
 												}
 											);
+				$.data( document.body, 'PPS-lock', false );
 			});
 			$photoStackContainer.append( $buttonNext );
 			$photoStackContainer.append( $buttonPrev );
@@ -144,14 +145,19 @@
 			'albumName' : 'album',
 			'cssPrefix' : 'PPS'
 		}, options );
-		this.bind('click', function() {
-					$.PolaroidPhotoStack.showLoadingMask( params.cssPrefix );
-					$.PolaroidPhotoStack.addControls( params.cssPrefix );
-					if ( params.data === null ) {
-						$.PolaroidPhotoStack.dynamicLoad( params.dataUrl , $(this).attr( params.albumName ), params.cssPrefix );
-					} else {
-						$.PolaroidPhotoStack.loadData( params.data, null, null, params.cssPrefix );
+		this.bind('click', function( eventObj ) {
+					var lock = $.data( document.body, 'PPS-lock' );
+					if ( lock === false || lock === undefined || lock === null )
+					{
+						$.data( document.body, 'PPS-lock', true );
+						$.PolaroidPhotoStack.showLoadingMask( params.cssPrefix );
+						$.PolaroidPhotoStack.addControls( params.cssPrefix );
+						if ( params.data === null ) {
+							$.PolaroidPhotoStack.dynamicLoad( params.dataUrl , $(this).attr( params.albumName ), params.cssPrefix );
+						} else {
+							$.PolaroidPhotoStack.loadData( params.data, null, null, params.cssPrefix );
+						}
 					}
-				} );
+				}, false );
 	};
 })( jQuery );
