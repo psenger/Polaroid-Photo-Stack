@@ -8,6 +8,8 @@
   *
   * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   **/
+
+
 (function( $ ) {
 
 	$.PolaroidPhotoStack = {
@@ -31,6 +33,12 @@
 		},
 		addControls : function( cssPrefix ) {
 			var $photoStackContainer = $('<div />', { id : cssPrefix + '-Container' } ).appendTo(document.body);
+			// todo @PAS August 21 2012 : Hard coding the height will eventually fail.
+			$photoStackContainer.css({
+				'width'		: 500 + 'px',
+				'height'	: 500 + 'px'
+			});
+			$photoStackContainer.center(false);
 			var $buttonNext = $( '<div />' , { id : cssPrefix + '-Next' } );
 			var $buttonPrev = $( '<div />' , { id : cssPrefix + '-Prev' } );
 			var $buttonClose = $( '<div />' ,{ id : cssPrefix + '-Close' } );
@@ -147,6 +155,19 @@
 				$.PolaroidPhotoStack.loadData( data, textStatus, jqXHR, cssPrefix );
 			} );
 		}
+	};
+	$.fn.center = function(parent) {
+		if (parent) {
+			parent = this.parent();
+		} else {
+			parent = window;
+		}
+		this.css({
+			"position": "absolute",
+			"top": ((($(parent).height() - this.outerHeight()) / 2) + $(parent).scrollTop() + "px"),
+			"left": ((($(parent).width() - this.outerWidth()) / 2) + $(parent).scrollLeft() + "px")
+		});
+		return this;
 	};
 	$.fn.PolaroidPhotoStack = function( options ) {
 		var params = $.extend( {

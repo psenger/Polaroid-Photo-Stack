@@ -9,7 +9,7 @@
 @import "sprites/*.png";
 
 @include all-sprites-sprites;
- 		
+	
 .PPS-Loading-Mask {
 	background : #121212 url( ../images/loading.gif ) no-repeat 50% 50%;
 	position : absolute;
@@ -23,13 +23,9 @@
 	#PPS-Next {
 		@extend .sprites-NEXT;
 		background : {
-			// position : 12px 12px;
-			// position : center;
 			color : #000;			
 		}
 		cursor : pointer;
-		// width : 56px;
-		// height : 56px;
 		position : fixed;
 		right : 10px;
 		top : 200px;
@@ -40,13 +36,9 @@
 	#PPS-Prev {
 		@extend .sprites-PREV;
 		background : {
-			// position : 12px 12px;
-			// position : center;
 			color : #000;			
 		}
 		cursor : pointer;
-		// width : 56px;
-		// height : 56px;
 		position : fixed;
 		left : 10px;
 		top : 200px;
@@ -57,13 +49,9 @@
 	#PPS-Close {
 		@extend .sprites-CLOSE;
 		background : {
-			// position : 12px 12px;
-			// position : center;
 			color : #000;			
 		}
 		cursor : pointer;
-		// width : 56px;
-		// height : 56px;
 		position : fixed;
 		right : 10px;
 		top : 10px;
