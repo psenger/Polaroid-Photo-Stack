@@ -23,14 +23,6 @@
 		unLock : function( ) {
 			$.data( document.body, 'PPS-lock', false );
 		},
-		showLoadingMask : function( cssPrefix ) {
-			$('<div id="' + cssPrefix + '-Loading-Mask" class="loading" />').appendTo(document.body);
-		},
-		hideLoadingMask : function( cssPrefix ) {
-			$('#' + cssPrefix + '-Loading-Mask').fadeOut('slow', function() {
-				$(this).remove();
-			});
-		},
 		addControls : function( cssPrefix ) {
 			var $photoStackContainer = $('<div />', { id : cssPrefix + '-Container' } ).appendTo(document.body);
 			// todo @PAS August 21 2012 : Hard coding the height will eventually fail.
@@ -120,7 +112,6 @@
 				this.count--;
 				if ( this.count <= 0 )
 				{
-					$.PolaroidPhotoStack.hideLoadingMask( cssPrefix );
 					$.PolaroidPhotoStack.showControls( cssPrefix );
 				}
 			};
@@ -179,7 +170,6 @@
 		this.bind('click', function( eventObj ) {
 					if ( $.PolaroidPhotoStack.isUnLocked() ) {
 						$.PolaroidPhotoStack.lock();
-						$.PolaroidPhotoStack.showLoadingMask( params.cssPrefix );
 						$.PolaroidPhotoStack.addControls( params.cssPrefix );
 						if ( params.data === null ) {
 							$.PolaroidPhotoStack.dynamicLoad( params.dataUrl , $(this).attr( params.albumName ), params.cssPrefix );
