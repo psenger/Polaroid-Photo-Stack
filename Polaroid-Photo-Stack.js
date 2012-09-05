@@ -8,8 +8,6 @@
   *
   * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   **/
-
-
 (function( $ ) {
 
 	$.PolaroidPhotoStack = {
@@ -34,6 +32,11 @@
 			var $buttonNext = $( '<div />' , { id : cssPrefix + '-Next' } );
 			var $buttonPrev = $( '<div />' , { id : cssPrefix + '-Prev' } );
 			var $buttonClose = $( '<div />' ,{ id : cssPrefix + '-Close' } );
+
+			$buttonNext.hide();
+			$buttonPrev.hide();
+			$buttonClose.hide();
+
 			$buttonNext.bind ( 'click' , function () {
 				$photoStackContainer.children('div:nth-child(4)')
 									.animate(
@@ -101,7 +104,7 @@
 			$('#' + cssPrefix + '-Next').fadeIn('slow');
 			$('#' + cssPrefix + '-Prev').fadeIn('slow');
 			$('#' + cssPrefix + '-Close').fadeIn('slow');
-			$('#' + cssPrefix + '-Container').fadeIn('slow');
+			$('.' + cssPrefix + '-Photo').fadeIn('slow');
 		},
 		loadData : function( data, textStatus, jqXHR, cssPrefix ) {
 			// Count Down Latch is designed to fire off a function after it fires n number of times.
@@ -117,7 +120,8 @@
 			};
 			var countDownLatch = new CountDownLatch( data.length );
 			var xtndFn = function( indexInArray, valueOfElement, countDownLatch ) {
-				var $image = $('<img class="' + cssPrefix + '-Photo"/>')
+				var $photo = $('<img class="' + cssPrefix + '-Photo"/>')
+									.hide()
 									.attr('src', "/" + valueOfElement )
 									.load( function() {
 														var from = -3;
@@ -137,7 +141,7 @@
 														$(this).wrap( $('<div class="' + cssPrefix + '-Photo-Wrapper"/>' ).css(rotate) );
 														countDownLatch.fire();
 													} );
-				$('#' + cssPrefix + '-Container').append( $image );
+				$('#' + cssPrefix + '-Container').append( $photo );
 			};
 			jQuery.each( data, function( indexInArray, valueOfElement ) { xtndFn( indexInArray, valueOfElement, countDownLatch ); } );
 		},
