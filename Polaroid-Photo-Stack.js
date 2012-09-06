@@ -32,11 +32,9 @@
 			var $buttonNext = $( '<div />' , { id : cssPrefix + '-Next' } );
 			var $buttonPrev = $( '<div />' , { id : cssPrefix + '-Prev' } );
 			var $buttonClose = $( '<div />' ,{ id : cssPrefix + '-Close' } );
-
 			$buttonNext.hide();
 			$buttonPrev.hide();
 			$buttonClose.hide();
-
 			$buttonNext.bind ( 'click' , function () {
 				$photoStackContainer.children('div:nth-child(4)')
 									.animate(
@@ -105,6 +103,7 @@
 			$('#' + cssPrefix + '-Prev').fadeIn('slow');
 			$('#' + cssPrefix + '-Close').fadeIn('slow');
 			$('.' + cssPrefix + '-Photo').fadeIn('slow');
+			$('.' + cssPrefix + '-Photo-Wrapper').fadeIn('slow');
 		},
 		loadData : function( data, textStatus, jqXHR, cssPrefix ) {
 			// Count Down Latch is designed to fire off a function after it fires n number of times.
@@ -138,7 +137,7 @@
 																'margin-top'        :'-' + (imgheight/2) + 'px',
 																'margin-left'       :'-' + (imgwidth/2) + 'px'
 														};
-														$(this).wrap( $('<div class="' + cssPrefix + '-Photo-Wrapper"/>' ).css(rotate) );
+														$(this).wrap( $('<div class="' + cssPrefix + '-Photo-Wrapper"/>' ).css(rotate).hide() );
 														countDownLatch.fire();
 													} );
 				$('#' + cssPrefix + '-Container').append( $photo );
