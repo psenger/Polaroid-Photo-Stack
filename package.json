@@ -1,0 +1,21 @@
+{
+    "name": "Polaroid-Photo-Stack",
+    "version": "v1.0.1",
+    "description": "A Jquery Pluggin that produces Polaroid like Photos in a Stack",
+    "main": "src/Polaroid-Photo-Stack-min.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/psenger/Polaroid-Photo-Stack.git"
+    },
+    "author": "Philip A Senger",
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "gitHead": "6f2f8d0129a0e6bbc7e1625c007674298a8b9021",
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-uglify": "~0.2.0",
+        "grunt-contrib-jshint": "~0.4.1",
+        "grunt-contrib-compass": "~0.1.3",
+        "grunt-contrib-clean": "~0.4.0"
+    }
+}
