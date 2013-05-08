@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Foo Test Suite</title>
+    <!-- Load local jQuery. This can be overridden with a ?jquery=___ param. -->
+    <script src="/libs/jquery-loader.js"></script>
+    <!-- Load local QUnit. -->
+    <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.11.0.css" media="screen">
+    <script src="//code.jquery.com/qunit/qunit-1.11.0.js"></script>
+    <!-- Load local lib and tests. -->
+    <script src="/src/Polaroid-Photo-Stack.js"></script>
+    <script src="test.js"></script>
+    <!-- Removing access to jQuery and $. But it'll still be available as _$, if
+         you REALLY want to mess around with jQuery in the console. REMEMBER WE
+         ARE TESTING A PLUGIN HERE, THIS HELPS ENSURE BEST PRACTICES. REALLY. -->
+        <script>window._$ = jQuery.noConflict(true);</script>
+    </head>
+    <body>
+        <div id="qunit"></div>
+        <div class="album" id='qunit-fixture' >
+            <img src="/images/photos/album-one/ID-1005942.jpg" height="132" width="200" alt="Image courtesy of FreeDigitalPhotos.net"/>
+            <div class="ps_desc">
+                <h2>Spring</h2>
+                <span>Image courtesy of <a href="http://www.freedigitalphotos.net" target="_blank">FreeDigitalPhotos.net</a></span>
+            </div>
+        </div>
+    </body>
+</html>
