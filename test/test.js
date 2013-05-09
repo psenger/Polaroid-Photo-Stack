@@ -26,11 +26,11 @@
         }
     });
 // in progress... Philip A Senger
-//    test( "verify jquery chaining", function() {
-//       expect( 1 );
-//       var target = $('#qunit-fixture').PolaroidPhotoStack();
-//        equal( target, $('#qunit'), 'expected the plugin to return the object' );
-//    });
+    test( "verify jquery chaining", function() {
+       expect( 1 );
+       $('#qunit-fixture').addClass('test').PolaroidPhotoStack().removeClass('test');
+       equal( $('#qunit-fixture').hasClass('test'), false, 'expected the plugin to chain the object' );
+    });
     test( "A test of expected control elements present in the dom", function() {
         expect( 5 );
         $('#qunit-fixture').trigger('click');
